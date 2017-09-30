@@ -221,7 +221,13 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - This array is allowed to contain duplicate values.
 */
-var uniqueVendors;
+var vendorTransactions = transactions.filter(function(name) {
+  return name.vendor;
+})
+
+var uniqueVendors = vendorTransactions.map(function(name){
+  return name.vendor;
+})
 
 console.log( 'The unique vendors are:', uniqueVendors );
 
@@ -238,7 +244,13 @@ console.log( 'The unique vendors are:', uniqueVendors );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - Make sure that the resulting array *does not* include any duplicates.
 */
-var uniqueCustomers;
+var customerTransactions = transactions.filter(function(name) {
+  return name.customer;
+})
+
+var uniqueCustomers = customerTransactions.map(function(name){
+  return name.customer;
+})
 
 console.log( 'The unique customers are:', uniqueCustomers );
 
@@ -256,7 +268,15 @@ console.log( 'The unique customers are:', uniqueCustomers );
   - There may be more than 1 'sale' that includes 5 or more items.
   - Individual transactions do not have either `name` or `numItems` properties, we'll have to add them to the output.
 */
-var bigSpenders;
+var largeSales = transactions.filter(function(sale){
+  return sale.items.length >= 5 && sale.customer;
+})
+var bigSpenders = largeSales.map(function(sale){
+  return {
+    name: sale.customer,
+    numItems: sale.items.length,
+  }
+})
 
 console.log( 'The "big spenders" are:', bigSpenders );
 
