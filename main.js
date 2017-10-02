@@ -284,10 +284,10 @@ console.log( 'The "big spenders" are:', bigSpenders );
 */
 var allSaleItems = sales.map(function(sale) {
   return sale.items;
-})
+});
 var saleItems = allSaleItems.reduce(function(sale, items){
   return saleItems = sale.concat(items);
-})
+});
 var itemPrices = saleItems.map(function(item){
   return item.price;
 })
@@ -337,7 +337,7 @@ console.log( 'The sum of all purhcases is:', sumPurchases );
   HINT(S):
   - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
 */
-var netProfit;
+var netProfit = (+sumSales + +sumPurchases).toFixed(2);
 
 console.log( 'The net profit is:', netProfit );
 
