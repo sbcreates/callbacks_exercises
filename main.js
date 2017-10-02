@@ -221,11 +221,7 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - This array is allowed to contain duplicate values.
 */
-var vendorTransactions = transactions.filter(function(name) {
-  return name.vendor;
-})
-
-var uniqueVendors = vendorTransactions.map(function(name){
+var uniqueVendors = purchases.map(function(name){
   return name.vendor;
 })
 
@@ -244,11 +240,7 @@ console.log( 'The unique vendors are:', uniqueVendors );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - Make sure that the resulting array *does not* include any duplicates.
 */
-var customerTransactions = transactions.filter(function(name) {
-  return name.customer;
-})
-
-var uniqueCustomers = customerTransactions.map(function(name){
+var uniqueCustomers = sales.map(function(name){
   return name.customer;
 })
 
@@ -268,8 +260,8 @@ console.log( 'The unique customers are:', uniqueCustomers );
   - There may be more than 1 'sale' that includes 5 or more items.
   - Individual transactions do not have either `name` or `numItems` properties, we'll have to add them to the output.
 */
-var largeSales = transactions.filter(function(sale){
-  return sale.items.length >= 5 && sale.customer;
+var largeSales = sales.filter(function(sale){
+  return sale.items.length >= 5;
 })
 var bigSpenders = largeSales.map(function(sale){
   return {
@@ -290,7 +282,18 @@ console.log( 'The "big spenders" are:', bigSpenders );
   HINT(S):
   - Transactions don't have 'prices', but their 'items' do!
 */
-var sumSales;
+var allSaleItems = sales.map(function(sale) {
+  return sale.items;
+})
+var saleItems = allSaleItems.reduce(function(sale, items){
+  return saleItems = sale.concat(items);
+})
+var itemPrices = saleItems.map(function(item){
+  return item.price;
+})
+var sumSales = itemPrices.reduce(function(total, price){
+  return total + price
+})
 
 console.log( 'The sum of all sales is:', sumSales );
 
