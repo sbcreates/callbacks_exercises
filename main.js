@@ -293,7 +293,7 @@ var itemPrices = saleItems.map(function(item){
 })
 var sumSales = itemPrices.reduce(function(total, price){
   return total + price
-})
+}).toFixed(2);
 
 console.log( 'The sum of all sales is:', sumSales );
 
@@ -308,8 +308,18 @@ console.log( 'The sum of all sales is:', sumSales );
   - Your solution to 'QUESTION 08' is a good starting point!
   - Make sure to include 'price' information from *all* purchases.
 */
-
-var sumPurchases;
+var allPurchaseItems = purchases.map(function(purchase){
+  return purchase.items;
+})
+var purchasedItems = allPurchaseItems.reduce(function(purchase, items){
+  return purchase.concat(items);
+})
+var purchasePrices = purchasedItems.map(function(item){
+  return item.price;
+})
+var sumPurchases = purchasePrices.reduce(function(total, price){
+  return total + price;
+}).toFixed(2);
 
 console.log( 'The sum of all purhcases is:', sumPurchases );
 
