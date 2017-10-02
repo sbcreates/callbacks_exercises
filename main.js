@@ -384,5 +384,4 @@ var sumOfSmallPurchases = smallestPurchasePrices.map(function(price){
 var sumOfSmallestPurchase = Math.max.apply(null, sumOfSmallPurchases);
 
 
-
 console.log( 'The sum of the smallest purchase is:', sumOfSmallestPurchase );
