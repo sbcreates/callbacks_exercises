@@ -365,6 +365,24 @@ console.log( 'The most items sold in a single transaction is:', mostItems );
 /*
   Calculate the sum of the 'purchase' with the fewest items.
 */
-var sumOfSmallestPurchase;
+var purchaseLength = allPurchaseItems.map(function(purchase){
+  return purchaseLength = purchase.length;
+})
+var smallestPurchases = allPurchaseItems.filter(function(purchase){
+  return purchase.length === Math.min.apply(null, purchaseLength);
+})
+var smallestPurchasePrices = smallestPurchases.map(function(purchase){
+  return purchase.map(function(item){
+    return item.price;
+  })
+})
+var sumOfSmallPurchases = smallestPurchasePrices.map(function(price){
+  return price.reduce(function(total, price){
+    return total + price;
+  })
+})
+var sumOfSmallestPurchase = Math.max.apply(null, sumOfSmallPurchases);
+
+
 
 console.log( 'The sum of the smallest purchase is:', sumOfSmallestPurchase );
